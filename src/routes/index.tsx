@@ -366,30 +366,32 @@ function Dashboard() {
 
           <div className="panel-surface rounded-lg p-5">
             <Tabs defaultValue="energy">
-              <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <TabsList>
                   <TabsTrigger value="energy">Energy vs. Output (Falsification Check)</TabsTrigger>
                   <TabsTrigger value="quality">
                     Water Quality vs. CPCB Standard Limits
                   </TabsTrigger>
                 </TabsList>
-                <div className="flex items-center gap-4 text-[11px] uppercase tracking-widest text-muted-foreground">
-                  <span className="flex items-center gap-1.5">
-                    <span className="h-0.5 w-4 bg-baseline" /> Baseline
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="size-2 rounded-full bg-verified" /> Verified
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="text-anomaly">✕</span> Anomaly
-                  </span>
-                </div>
               </div>
 
               <TabsContent value="energy" className="mt-4">
-                <p className="mb-2 text-xs text-muted-foreground">
-                  Measured draw against the expected treatment baseline.
-                </p>
+                <div className="mb-2 flex flex-wrap items-center justify-between gap-3">
+                  <p className="text-xs text-muted-foreground">
+                    Measured draw against the expected treatment baseline.
+                  </p>
+                  <div className="flex items-center gap-4 text-[11px] uppercase tracking-widest text-muted-foreground">
+                    <span className="flex items-center gap-1.5">
+                      <span className="h-0.5 w-4 bg-baseline" /> Baseline
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <span className="size-2 rounded-full bg-verified" /> Verified
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <span className="text-anomaly">✕</span> Anomaly
+                    </span>
+                  </div>
+                </div>
                 <EnergyChart data={rows} />
               </TabsContent>
 
