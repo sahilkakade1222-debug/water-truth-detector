@@ -13,7 +13,7 @@ import { LIMITS, type EvaluatedEntry } from "@/lib/stp";
 
 type Dot = { cx?: number; cy?: number; payload?: EvaluatedEntry };
 
-function makeMarker(key: "turbidity" | "bod", limit: number, color: string) {
+function marker(key: "turbidity" | "bod", limit: number, color: string) {
   return function Marker({ cx, cy, payload }: Dot) {
     if (cx == null || cy == null || !payload) return null;
     const over = payload[key] > limit;
@@ -28,6 +28,9 @@ function makeMarker(key: "turbidity" | "bod", limit: number, color: string) {
     );
   };
 }
+
+const TurbidityDot = marker("turbidity", LIMITS.turbidity, "var(--baseline)");
+const BodDot = marker("bod", LIMITS.bod, "var(--verified)");
 
 function QualityTooltip({
   active,
@@ -111,7 +114,7 @@ export function QualityChart({ data }: { data: EvaluatedEntry[] }) {
             stroke="var(--baseline)"
             strokeWidth={2}
             isAnimationActive={false}
-            dot={makeMarker("turbidity", LIMITS.turbidity, "var(--baseline)")}
+            dot={<TurbidityDot />}
             activeDot={false}
           />
           <Line
@@ -121,7 +124,7 @@ export function QualityChart({ data }: { data: EvaluatedEntry[] }) {
             stroke="var(--verified)"
             strokeWidth={2}
             isAnimationActive={false}
-            dot={makeMarker("bod", LIMITS.bod, "var(--verified)")}
+            dot={<BodDot />}
             activeDot={false}
           />
         </LineChart>
