@@ -12,17 +12,25 @@ export function MetricCard({
   value: ReactNode;
   unit?: string;
   hint?: string;
-  tone?: "default" | "verified" | "anomaly";
+  tone?: "default" | "verified" | "warning" | "anomaly";
   icon?: ReactNode;
 }) {
   const toneRing =
-    tone === "anomaly" ? "glow-anomaly" : tone === "verified" ? "glow-verified" : "";
+    tone === "anomaly"
+      ? "glow-anomaly"
+      : tone === "warning"
+        ? "glow-warning"
+        : tone === "verified"
+          ? "glow-verified"
+          : "";
   const toneText =
     tone === "anomaly"
       ? "text-anomaly"
-      : tone === "verified"
-        ? "text-verified"
-        : "text-foreground";
+      : tone === "warning"
+        ? "text-warning"
+        : tone === "verified"
+          ? "text-verified"
+          : "text-foreground";
 
   return (
     <div className={`panel-surface rounded-lg p-4 ${toneRing}`}>
