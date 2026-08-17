@@ -40,7 +40,7 @@ function Dashboard() {
   const [kwh, setKwh] = useState("800");
 
   const rows = useMemo(() => logs.map(evaluate), [logs]);
-  const latest = rows[rows.length - 1];
+  const latest = rows[rows.length - 1] ?? evaluate(seedLogs()[0]!);
   const anomalyCount = rows.filter((r) => r.anomaly).length;
 
   function addEntry(nextMld: number, nextKwh: number) {
