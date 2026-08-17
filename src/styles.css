@@ -25,6 +25,8 @@
   --color-verified-foreground: var(--verified-foreground);
   --color-anomaly: var(--anomaly);
   --color-anomaly-foreground: var(--anomaly-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-baseline: var(--baseline);
   --color-panel: var(--panel);
   --color-grid-line: var(--grid-line);
@@ -98,6 +100,8 @@
   --verified-foreground: oklch(0.16 0.02 165);
   --anomaly: oklch(0.64 0.26 5);
   --anomaly-foreground: oklch(0.98 0.01 250);
+  --warning: oklch(0.78 0.17 68);
+  --warning-foreground: oklch(0.18 0.03 68);
   --baseline: oklch(0.75 0.14 225);
   --panel: oklch(0.196 0.014 264);
   --grid-line: oklch(0.3 0.016 264);
@@ -180,6 +184,10 @@
 
 @utility glow-verified {
   box-shadow: var(--glow-verified);
+}
+
+@utility glow-warning {
+  box-shadow: 0 0 0 1px oklch(0.78 0.17 68 / 40%), 0 0 20px -4px oklch(0.78 0.17 68 / 45%);
 }
 
 @utility text-mono {
